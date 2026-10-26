@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather dashboard</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #96dff3;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Weather Dashboard</h2>
+
+    <input type="text" id="cityname" placeholder="City name">
+    <button onclick="getWeather()">Search</button>
+
+    <div id="result"></div>
+
+    <script>
+        function getWeather() {
+            let city = document.getElementById("cityname").value;
+            let key = "YOUR_API_KEY";
+
+            fetch()
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").innerHTML =
+                    "Temperature: " + data.main.temp + " °C<br>" +
+                    "Weather: " + data.weather[0].description;
+            })
+            .catch(error => {
+                document.getElementById("result").innerHTML =
+                    "Error fetching weather";
+            });
+        }
+    </script>
+
+</body>
+</html>
